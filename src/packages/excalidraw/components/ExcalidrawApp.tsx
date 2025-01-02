@@ -241,6 +241,7 @@ const ExcalidrawWrapper = (props: ExcalidrawAppProps) => {
             })
             .then((response) => {
               if (!response) {
+                console.log("response is null");
                 return;
               }
 
@@ -525,6 +526,9 @@ const ExcalidrawWrapper = (props: ExcalidrawAppProps) => {
     }
   };
 
+  {
+    console.log("ExcalidrawWrapper!!!!!");
+  }
   return (
     <div
       style={{ height: "100%" }}
