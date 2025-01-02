@@ -527,7 +527,7 @@ const ExcalidrawWrapper = (props: ExcalidrawAppProps) => {
   };
 
   {
-    console.log("ExcalidrawWrapper!!!!!");
+    console.log("ExcalidrawWrapper!");
   }
   return (
     <div
