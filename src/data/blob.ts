@@ -129,6 +129,7 @@ export const loadSceneOrLibraryFromBlob = async (
   /** FileSystemHandle. Defaults to `blob.handle` if defined, otherwise null. */
   fileHandle?: FileSystemHandle | null,
 ) => {
+  console.log("loadSceneOrLibraryFromBlob");
   const contents = await parseFileContents(blob);
   try {
     const data = JSON.parse(contents);

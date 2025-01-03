@@ -45,6 +45,7 @@ export const encodePngMetadata = async ({
 };
 
 export const decodePngMetadata = async (blob: Blob) => {
+  console.log("TEST_LOG: decodePngMetadata");
   const metadata = await getTEXtChunk(blob);
   if (metadata?.keyword === MIME_TYPES.excalidraw) {
     try {
