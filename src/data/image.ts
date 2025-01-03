@@ -45,22 +45,39 @@ export const encodePngMetadata = async ({
 };
 
 export const decodePngMetadata = async (blob: Blob) => {
-  console.log("TEST_LOG: decodePngMetadata");
   const metadata = await getTEXtChunk(blob);
-  if (metadata?.keyword === MIME_TYPES.excalidraw) {
-    try {
-      const encodedData = JSON.parse(metadata.text);
-      if (!("encoded" in encodedData)) {
-        // legacy, un-encoded scene JSON
-        console.log("TEST_LOG: decodePngMetadata");
-        return metadata.text;
-      }
-      return await decode(encodedData);
-    } catch (error: any) {
-      console.error(error);
-      throw new Error("FAILED");
-    }
+  console.log("TEST_LOG: decodePngMetadata metadata");
+  if (!metadata) {
+    console.log("TEST_LOG: decodePngMetadata metadata is null");
+    throw new Error("INVALID");
   }
+  try {
+    const encodedData = JSON.parse(metadata.text);
+    if (!("encoded" in encodedData)) {
+      // legacy, un-encoded scene JSON
+      console.log("TEST_LOG: decodePngMetadata");
+      return metadata.text;
+    }
+    return await decode(encodedData);
+  } catch (error: any) {
+    console.error(error);
+    throw new Error("FAILED");
+  }
+  // if (metadata?.keyword === MIME_TYPES.excalidraw) {
+  //   try {
+  //     const encodedData = JSON.parse(metadata.text);
+  //     if (!("encoded" in encodedData)) {
+  //       // legacy, un-encoded scene JSON
+  //       console.log("TEST_LOG: decodePngMetadata");
+  //       return metadata.text;
+  //     }
+  //     return await decode(encodedData);
+  //   } catch (error: any) {
+  //     console.error(error);
+  //     throw new Error("FAILED");
+  //   }
+  // }
+  console.log("TEST_LOG: decodePngMetadata throw new Error");
   throw new Error("INVALID");
 };
 

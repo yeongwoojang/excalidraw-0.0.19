@@ -22,13 +22,15 @@ const parseFileContents = async (blob: Blob | File) => {
         await import(/* webpackChunkName: "image" */ "./image")
       ).decodePngMetadata(blob);
     } catch (error: any) {
-      console.log("TEST_LOG: decodePngMetadata error: " + error.message);
+      console.log("TEST_LOG111: decodePngMetadata error: " + error.message);
       if (error.message === "INVALID") {
+        console.log("TEST_LOG111 throw new DOMException 1");
         throw new DOMException(
           t("alerts.imageDoesNotContainScene"),
           "EncodingError",
         );
       } else {
+        console.log("TEST_LOG111 throw new DOMException 2");
         throw new DOMException(
           t("alerts.cannotRestoreFromImage"),
           "EncodingError",
