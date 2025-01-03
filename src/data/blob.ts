@@ -22,6 +22,7 @@ const parseFileContents = async (blob: Blob | File) => {
         await import(/* webpackChunkName: "image" */ "./image")
       ).decodePngMetadata(blob);
     } catch (error: any) {
+      console.log("TEST_LOG: decodePngMetadata error: " + error.message);
       if (error.message === "INVALID") {
         throw new DOMException(
           t("alerts.imageDoesNotContainScene"),
