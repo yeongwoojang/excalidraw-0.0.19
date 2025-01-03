@@ -51,13 +51,8 @@ export const decodePngMetadata = async (blob: Blob) => {
       const encodedData = JSON.parse(metadata.text);
       if (!("encoded" in encodedData)) {
         // legacy, un-encoded scene JSON
-        if (
-          "type" in encodedData &&
-          encodedData.type === EXPORT_DATA_TYPES.excalidraw
-        ) {
-          return metadata.text;
-        }
-        throw new Error("FAILED");
+        console.log("TEST_LOG: decodePngMetadata");
+        return metadata.text;
       }
       return await decode(encodedData);
     } catch (error: any) {

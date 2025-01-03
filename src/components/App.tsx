@@ -5315,6 +5315,7 @@ class App extends React.Component<AppProps, AppState> {
   };
 
   private handleAppOnDrop = async (event: React.DragEvent<HTMLDivElement>) => {
+    console.log("handleAppOnDrop");
     if (this.props.UIOptions.canvasActions.disableFileDrop) {
       return;
     }
