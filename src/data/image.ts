@@ -45,8 +45,9 @@ export const encodePngMetadata = async ({
 };
 
 export const decodePngMetadata = async (blob: Blob) => {
-  const metadata = await getTEXtChunk(blob);
   console.log("TEST_LOG: decodePngMetadata metadata");
+  console.log(blob);
+  const metadata = await getTEXtChunk(blob);
   if (!metadata) {
     console.log("TEST_LOG: decodePngMetadata metadata is null");
     throw new Error("INVALID");
