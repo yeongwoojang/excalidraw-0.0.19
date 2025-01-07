@@ -67,6 +67,7 @@ export class FileManager {
     elements: readonly ExcalidrawElement[];
     files: BinaryFiles;
   }) => {
+    console.log("saveFiles", elements, files);
     const addedFiles: Map<FileId, BinaryFileData> = new Map();
 
     for (const element of elements) {
