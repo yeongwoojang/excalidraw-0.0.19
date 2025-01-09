@@ -490,12 +490,16 @@ const ExcalidrawWrapper = (props: ExcalidrawAppProps) => {
     appState: AppState,
     files: BinaryFiles,
   ) => {
+    console.log("collabAPI?.isCollaborating()");
+    console.log(collabAPI?.isCollaborating());
     if (collabAPI?.isCollaborating()) {
       collabAPI.syncElements(elements);
     }
 
     // this check is redundant, but since this is a hot path, it's best
     // not to evaludate the nested expression every time
+    console.log("LocalData.isSavePaused()");
+    console.log(LocalData.isSavePaused());
     if (!LocalData.isSavePaused()) {
       LocalData.save(elements, appState, files, () => {
         if (excalidrawAPI) {
